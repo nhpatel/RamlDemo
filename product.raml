@@ -1,0 +1,70 @@
+#%RAML 0.8
+title: Product
+version: v1
+
+/products :
+  description: Collection of all products.
+  get :
+    description : Display product by name.
+    queryParameters:
+     productName :
+       description : The title of the product 
+       required : true
+       type : string
+    responses :
+      200 :
+        body :
+          application/json:
+            example: |
+              "Products" : [
+                {
+                  "productId" : "101-p1" ,
+                  "productName" : "Software- JAVA"
+                },
+                 {
+                  "productId" : "102-p2" ,
+                  "productName" : "Database- My SQL"
+                },
+                {
+                  "productId" : "103-p3" ,
+                  "productName" : "DataBase- Oracle"
+                },
+                {
+                  "productId" : "103-p3" ,
+                  "productName" : "DataBase- PostGress"
+                }
+                ]
+                
+      
+  
+/{productId} :
+  description: Display product by Id
+  get:
+   responses :
+      200 :
+        body :
+          application/json:
+            example: |
+             
+                {
+                  "productId" : "101-p1" ,
+                  "productName" : "Software- JAVA"
+                },
+                 {
+                  "productId" : "102-p2" ,
+                  "productName" : "Database- My SQL"
+                },
+                {
+                  "productId" : "103-p3" ,
+                  "productName" : "DataBase- Oracle"
+                },
+                {
+                  "productId" : "103-p3" ,
+                  "productName" : "DataBase- PostGress"
+                }
+                
+      400 :
+        body :
+          application/json :
+            example : |
+                {"Message " : "Product Not Found"}
